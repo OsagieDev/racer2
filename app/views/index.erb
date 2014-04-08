@@ -1,23 +1,48 @@
-<div class="container">
-  <h1>Welcome to Sinatra!</h1>
-  <p>Hello, world!</p>
+<% if @players %>
+    <table class="racer_table">
+      <p>Welcome To JScript Racer!</p>
+      <p>Hit P  and Q to play</p>
+    </table>
+    <table class="racer_table">
+      <tr id="player1">
+        <td class="active"></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <br>
+      <br>
+      <tr id="player2">
+        <td class="active"></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </table>
 
-  <table>
-    <tr>
-      <th>File Description</th>
-      <th>File Location</th>
-    </tr>
-    <tr>
-      <td>This view file</td>
-      <td><code><%= __FILE__.gsub(Sinatra::Application.root, '') %></code></td>
-    </tr>
-    <tr>
-      <td>The layout file</td>
-      <td><code><%= File.expand_path('../layout.erb', __FILE__).gsub(Sinatra::Application.root, '') %></code></td>
-    </tr>
-    <tr>
-      <td>The current controller</td>
-      <td><code><%= File.expand_path('../../controllers/index.rb', __FILE__).gsub(Sinatra::Application.root, '') %></code></td>
-    </tr>
-  </table>
-</div>
+    <div class="winner"></div>
+    <div class="winner-table">
+      <form action="/games/winner" method="post">
+        <input type='hidden' name="round_id" value="<%= @round_id %>"/>
+        <input type='hidden' name="winner" value="<%= @winner %>"/>
+        <input type='submit' value='Game Over!' class='start-button'/><br>
+      </form>
+    </div>
+<% else %>
+  <form action="/games" method="post">
+    <input type="text" name="player1" placeholder="Player 1 here!" />
+    <br>
+    <br>
+    <input type="text" name="player2" placeholder="Player 2 here!" />
+    <br>
+    <input type="submit" value="Start Game!" />
+  </form>
+<% end %>

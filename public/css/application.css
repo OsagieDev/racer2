@@ -7,3 +7,39 @@
 th {
   text-align: left;
 }
+
+.racer_table td {
+  background-color: white;
+  height: 20px;
+  width: 20px;
+  border: solid 1px black;
+}
+
+.racer_table td.active {
+  background-color: black;
+}
+
+.racer_table td.inactive {
+  background-color: white;
+}
+
+.racer_table {
+  width: 500px;
+  margin-top: 80px;
+  margin-left: 400px;
+}
+
+.winner {
+  width: 500px;
+  margin: auto;
+
+}
+
+.winner h1 {
+  font-size: 5em;
+  color: red;
+}
+
+.winner-table {
+  visibility: hidden;
+}
